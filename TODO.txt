@@ -1,0 +1,13 @@
+        
+            // TODO : idee : retenir à chaque fois les positions et faire un graph ?
+            // loading img preloader
+            // design + animations
+            // jribbble => php api with save each 30 secs
+            - analytics
+            - domain name
+            - plugin chrome ? 
+            - translation
+            - title / meta ...
+            - errors
+            - scroll directive
+            

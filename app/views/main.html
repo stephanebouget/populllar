@@ -1,23 +1,36 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<header id="header" layout="column" layout-align="center center">
+    <md-progress-linear ng-show="isLoadingShots" md-mode="query"></md-progress-linear>
+    populllar
+</header>
+
+<div id="main" layout="column" layout-align="center center">
+    <form layout="column" layout-align="center center">
+        <md-input-container layout="row" layout-align="center center">
+            <input ng-model="searchUser">
+        </md-input-container>
+        <md-button layout="row" layout-align="center center" class="md-raised" type="submit" ng-click="amIPopulllar()">Am I populllar ?</md-button>
+    </form>
+    <div layout="row" layout-align="center center">
+        <div ng-if="userIsPopulllar">
+            <span>You re populllar !</span>
+            <span>in position {{userIsPopulllar}}</span>
+        </div>
+        <div ng-if="!userIsPopulllar && shots">
+            <span>You re not populllar !</span>
+            <span>in position > 100 ...</span>
+        </div>
+    </div>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+<footer id="footer">
+    <ul id="shots" ng-if="userIsPopulllar">
+        <li ng-repeat="shot in shots track by $index" ng-class="{populllarShot:$index === userIsPopulllar-1}" layout="column" layout-align="center center">
+            <img layout="row" class="shot" src="{{shot.images.teaser}}" />
+            <div layout="row" layout-align="center center">
+                <img class="avatar" src="{{shot.user.avatar_url}}" />
+                <span class="username">{{shot.user.username}}</span>
+            </div>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+        </li>
+    </ul>
+</footer>
